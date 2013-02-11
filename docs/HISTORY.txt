@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.1.1 2013-02-11
+----------------
+
+* Fixes to make the package work on Plone 4, too [fRiSi]
+
+
 0.1 - Unreleased
 ----------------
 

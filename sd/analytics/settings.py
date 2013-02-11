@@ -7,6 +7,8 @@ from plone.z3cform.widget import singlecheckboxwidget_factory
 import z3c.form
 
 from collective.dancing import channel
+from collective.dancing.browser.channel import ChannelAdministrationView
+
 from collective.dancing import browser
 
 from interfaces import IAnalytics
@@ -35,7 +37,7 @@ class AnalyticsForm(z3c.form.form.EditForm):
         self.context._p_changed = True
         
 
-class AnalyticsView(browser.channel.ChannelAdministrationView):
+class AnalyticsView(ChannelAdministrationView):
 
     label = _("Google Analytics setup")
     def contents(self):

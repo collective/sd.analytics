@@ -5,7 +5,9 @@
     i18n_domain="sd.analytics">
 
     <five:registerPackage package="." initialize=".initialize" />
-    
+    <include package="collective.dancing" file="permissions.zcml" />
+
+
     <adapter factory=".settings.analytics_settings_for_newsletters" />
 
     <adapter
