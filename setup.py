@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1.1'
+version = '0.1.2'
 
 setup(name='sd.analytics',
       version=version,
@@ -25,7 +25,6 @@ setup(name='sd.analytics',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'z3c.jbot',
           'collective.dancing',
           # -*- Extra requirements: -*-
       ],
