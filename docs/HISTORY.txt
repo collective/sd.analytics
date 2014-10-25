@@ -1,6 +1,12 @@
 Changelog
 =========
 
+dev
+---
+
+* fix imports for plone 4.3 compatibility
+  [fRiSi]
+
 0.1.2 2013-02-11
 ----------------
 

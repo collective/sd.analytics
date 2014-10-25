@@ -1,7 +1,7 @@
 import re
 import urllib
 from BeautifulSoup import BeautifulSoup, SoupStrainer
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from zope import interface
 from zope import component
 from Products.CMFPlone.interfaces import IPloneSiteRoot
@@ -15,7 +15,7 @@ relative_exp = re.compile('^(?!(\w+://|mailto:|javascript:|/))')
 
 class Analytics(object):
     interface.implements(collective.singing.interfaces.ITransform)
-    
+
     def __init__(self, context):
         self.context = context
 
@@ -42,12 +42,12 @@ class Analytics(object):
     @property
     def active(self):
         return self.settings['enabled']
-         
+
     def __call__(self, text, subscription):
         if not self.active:
             return text
 
-        soup = BeautifulSoup(text, fromEncoding='UTF-8') 
+        soup = BeautifulSoup(text, fromEncoding='UTF-8')
 
         for attr in ('href', 'src'):
             for tag in soup.findAll(attrs={attr:lambda x:x}):
@@ -56,7 +56,7 @@ class Analytics(object):
                 if not url.startswith(self.site.absolute_url()) and \
                        not relative_exp.match(url):
                     continue
-                
+
                 params = self.params
                 if not params.has_key('utm_campaign'):
                     params.update(dict(utm_campaign=subscription.channel.name))
