@@ -3,6 +3,7 @@ from zope import schema
 
 from sd.analytics import MessageFactory as _
 
+
 class IAnalytics(interface.Interface):
     # titles and descriptions lifted from google own "URL builder"
     # http://www.google.com/support/analytics/bin/answer.py?hl=en&answer=55578
@@ -35,4 +36,3 @@ class IAnalytics(interface.Interface):
         title=_(u"Campaign Name (utm_campaign)"),
         description=_(u"Keep blank to use channel id (and be able to differentiate between different newsletters). Used for keyword analysis. Use utm_campaign to identify a specific product promotion or strategic campaign. Example: utm_campaign=spring_sale."),
         required=False)
-

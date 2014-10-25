@@ -1,17 +1,17 @@
-import re
-import urllib
-from BeautifulSoup import BeautifulSoup, SoupStrainer
-from zope.component.hooks import getSite
-from zope import interface
-from zope import component
+from BeautifulSoup import BeautifulSoup
 from Products.CMFPlone.interfaces import IPloneSiteRoot
+from collective.dancing import utils
+from interfaces import IAnalytics
+from zope import component
+from zope import interface
+from zope.component.hooks import getSite
 
 import collective.singing.interfaces
-from collective.dancing import utils
-
-from interfaces import IAnalytics
+import re
+import urllib
 
 relative_exp = re.compile('^(?!(\w+://|mailto:|javascript:|/))')
+
 
 class Analytics(object):
     interface.implements(collective.singing.interfaces.ITransform)
@@ -32,11 +32,11 @@ class Analytics(object):
 
     @property
     def settings(self):
-        return  IAnalytics(self.site.portal_newsletters)
+        return IAnalytics(self.site.portal_newsletters)
 
     @property
     def params(self):
-        return dict([(k,v) for k,v in self.settings.items() \
+        return dict([(k, v) for k, v in self.settings.items()
                      if v and k is not 'enabled'])
 
     @property
@@ -50,19 +50,19 @@ class Analytics(object):
         soup = BeautifulSoup(text, fromEncoding='UTF-8')
 
         for attr in ('href', 'src'):
-            for tag in soup.findAll(attrs={attr:lambda x:x}):
+            for tag in soup.findAll(attrs={attr: lambda x: x}):
                 url, query = urllib.splitquery(tag[attr])
 
-                if not url.startswith(self.site.absolute_url()) and \
-                       not relative_exp.match(url):
+                if (not url.startswith(self.site.absolute_url()) and
+                        not relative_exp.match(url)):
                     continue
 
                 params = self.params
-                if not params.has_key('utm_campaign'):
+                if 'utm_campaign' not in params:
                     params.update(dict(utm_campaign=subscription.channel.name))
                 if query is not None:
-                    params.update(dict(['=' in q and q.split('=') or (q,'') \
-                                   for q in query.split('&') if q]))
+                    params.update(dict(['=' in q and q.split('=') or (q, '')
+                                  for q in query.split('&') if q]))
 
                 tag[attr] = u'%s?%s' % (url, urllib.urlencode(params))
 
