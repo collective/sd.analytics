@@ -1,9 +1,9 @@
 from collective.dancing import channel
 from collective.dancing.browser.channel import ChannelAdministrationView
+from collective.dancing.utils import switch_on
 from interfaces import IAnalytics
-from sd.analytics import MessageFactory as _
 from persistent.dict import PersistentDict
-from plone.z3cform import z2
+from sd.analytics import MessageFactory as _
 from zope import component
 from zope import interface
 from zope.annotation.interfaces import IAnnotations
@@ -39,8 +39,7 @@ class AnalyticsView(ChannelAdministrationView):
     label = _("Google Analytics setup")
 
     def contents(self):
-        # A call to 'switch_on' is required before we can render z3c.forms.
-        z2.switch_on(self)
+        switch_on(self)
         return AnalyticsForm(self.context, self.request)()
 
 defaults = {'enabled': False,
