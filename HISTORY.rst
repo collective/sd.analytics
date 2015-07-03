@@ -4,6 +4,11 @@ Changelog
 dev
 ---
 
+* fix rendering of settings page [fRiSi]
+
+* bugfix: exclude the `enabled` parameter from the
+  generated links [fRiSi]
+
 * fix imports for plone 4.3 compatibility
   [fRiSi]
 
