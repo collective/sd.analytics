@@ -37,7 +37,7 @@ class Analytics(object):
     @property
     def params(self):
         return dict([(k, v) for k, v in self.settings.items()
-                     if v and k is not 'enabled'])
+                     if v and k != 'enabled'])
 
     @property
     def active(self):
