@@ -1,7 +1,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-version = '0.1.2'
+version = '0.1.3'
 
 setup(
     name='sd.analytics',
@@ -13,9 +13,11 @@ setup(
         ]),
     # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
+        "Environment :: Web Environment",
         "Framework :: Plone",
+        "Framework :: Plone :: 4.3",
         "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Programming Language :: Python :: 2.7",
         ],
     keywords='google analytics singing dancing newsletter trackingaddon extension',
     author='Thomas Clement Mogensen',

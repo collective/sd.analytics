@@ -1,8 +1,8 @@
 Changelog
 =========
 
-dev
----
+0.1.3 2015-07-10
+----------------
 
 * fix rendering of settings page [fRiSi]
 
@@ -12,10 +12,12 @@ dev
 * fix imports for plone 4.3 compatibility
   [fRiSi]
 
+
 0.1.2 2013-02-11
 ----------------
 
 * remove unnecessary dependency to z3c.jbot
+
 
 0.1.1 2013-02-11
 ----------------
